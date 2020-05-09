@@ -167,7 +167,10 @@ a:hover, a:active {
 /*
 # Call Button
 --------------------------------*/
+
 .call-btn {
+    border-radius: 20px;
+    background: #18a3eb !important;
     min-width: 210px;
     padding: 8px 12px 6px !important;
     margin-left: 24px;

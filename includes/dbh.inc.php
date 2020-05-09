@@ -1,10 +1,12 @@
 <?php
-try{
-    $database = new PDO('mysql:host=localhost;dbname=cabinet médical','root','');
-    $database->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+$dbhost = "localhost";
+$db = "cabinet médical";
+$dbuser = "root";
+$dbpass = "";
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $db);
+if (!$conn) {
+    die("Connection failed: ". mysqli_connect_error());
 }
-catch (Exception $e)
-{
-    die('Error : '.$e -> getMessage());
-}
+
 ?>

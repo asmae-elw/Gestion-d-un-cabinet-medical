@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +22,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_profil.css">
     <script src="js/custom.js"></script>
+    <script src="js/index.js"></script>
+
 
 
 
