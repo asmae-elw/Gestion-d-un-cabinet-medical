@@ -39,17 +39,16 @@ session_start();
                     </div>
                 <nav class="side-menu">
                 <ul class="nav">
-                  <li class="active"><a href="#"><span class="fa fa-user"></span> Profile</a></li> 
-                  <li><a href="avoir_rdv.html"><span class="fa fa-clock-o"></span> Avoir rendez-vous</a></li>
-                  <li><a href="#"><span class="fa fa-credit-card"></span> Voir Ordonnance</a></li>
+                  <li class="active"><a href="profil_patient.php"><span class="fa fa-user"></span> Profile</a></li> 
+                  <li><a href="avoir_rdv.php"><span class="fa fa-clock-o"></span> Avoir rendez-vous</a></li>
+                  <li><a href="voir_ordonnance.php"><span class="fa fa-credit-card"></span> Voir Ordonnance</a></li>
                   <li><a href="index.php"><span class="fa fa-credit-card"></span> Accueil</a></li>
-
                 </ul>
               </nav>
                 </div>
                 <div class="content-panel">
                     <h2 class="title">Profile<span class="pro-label label label-warning"></span></h2>
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="includes/profile.inc.php" method = "post">
                         <fieldset class="fieldset">
                         <?php
                             if (isset($_SESSION['unserId'])) {
@@ -58,6 +57,21 @@ session_start();
                                 echo "<h5>Email : ".$_SESSION['unserEmail']. "  </h5><br>";
                                 echo "<h5>Date de naissance : ".$_SESSION['unserBirth']. "  </h5><br>";
                                 echo "<h5>Genre : ".$_SESSION['unserGender']. " </h5><br>";
+                                if ($_SESSION['unserTel'] !== 0) {
+                                    echo "<h5>Tel : ".$_SESSION['unserTel']. " </h5><br>";
+                                }else{
+                                    echo '<h5>Tel : </h5><input type="number"  placeholder="Numero de tel" class="form-control" name= "Tel" ><br>';
+                                }
+                                if ($_SESSION['unserS']) {
+                                    echo "<h5>Groupe Sangin : ".$_SESSION['unserS']. " </h5><br>";
+                                }else{
+                                    echo '<h5>Groupe Sangin : </h5><input type="text"  placeholder="Votre Group Sangin si connue" class="form-control" name= "GroupS"> <br>';
+                                }
+                                if ($_SESSION['unserTel'] && $_SESSION['unserS']) {
+                                    echo "<p style='text-decoration-line: underline;'>Votre profile est vomplet</p>";
+                                }else{
+                                    echo '<button type="submit" name="profile-submit" class="btn btn-primary">Enregistrer les modification</button>';
+                                }
                             }else{
                                 die("Erreur: Vous n'etes pas connecté.");
                             }

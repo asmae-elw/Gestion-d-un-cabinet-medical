@@ -36,7 +36,7 @@
             </div>    
         </div>
         <div class="creatacc">
-            <a href="register_medecin.html"> Vous n'avez pas un compte?</a>
+            <a href="signup.php"> Vous n'avez pas un compte?</a>
         </div>
 
         <button type="submit" name="login-p-submit" class="btn btn-primary btn-block">Connexion</button>
@@ -58,10 +58,7 @@
                 <input type="password" name="password" id="password" placeholder="Mot de passe" class="form-control" >   
             </div>    
         </div>
-        <div class="creatacc">
-            <a href="register_medecin.html"> Vous n'avez pas un compte?</a>
-        </div>
-
+    
         <button type="submit" name="login-m-submit" class="btn btn-primary btn-block">Connexion</button>
     </form> 
     </div>

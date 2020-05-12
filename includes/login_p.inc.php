@@ -20,7 +20,7 @@ if (isset($_POST['login-p-submit'])) {
             mysqli_stmt_bind_param($statment, "s", $email);
             mysqli_stmt_execute($statment);
             $result = mysqli_stmt_get_result($statment);
-            if ($row = mysqli_fetch_assoc($result)) {//fatching the result in an associative array, so we can use it after
+            if ($row = mysqli_fetch_assoc($result)) {//fetching the result in an associative array, so we can use it after
 
                 if ($psw !== $row['mdp']) {//if the password is wrong
                     header("Location: ../login.php?error=wrongpassword");
@@ -33,6 +33,8 @@ if (isset($_POST['login-p-submit'])) {
                     $_SESSION['unserEmail'] = $row['Email'];
                     $_SESSION['unserBirth'] = $row['Datenaissance'];
                     $_SESSION['unserGender'] = $row['genre'];
+                    $_SESSION['unserTel'] = $row['Tel'];
+                    $_SESSION['unserS'] = $row['GroupS'];
 
                     header("Location: ../index.php?login=success");
                     exit();

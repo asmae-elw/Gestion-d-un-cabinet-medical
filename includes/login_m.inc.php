@@ -31,7 +31,7 @@ if (isset($_POST['login-m-submit'])) {
                     $_SESSION['unserLastname'] = $row['Nom'];
                     $_SESSION['unserFirstname'] = $row['Prénom'];
                     $_SESSION['unserEmail'] = $row['Email'];
-                    header("Location: ../profile_medecin.php?login=success");
+                    header("Location: ../profil_medecin.php?login=success");
                     exit();
 
                 }else{//if the password is wrong

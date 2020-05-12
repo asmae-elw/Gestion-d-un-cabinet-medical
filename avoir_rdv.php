@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,29 +25,34 @@
     <script src="js/custom.js"></script>
 </head>
 <body>
-<div style="background-image: url('https://www.qare.fr/wp-content/uploads/2020/02/GettyImages-885764252-1.jpg');">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container">
-    <div class="view-account">
-        <section class="module">
-            <div class="module-inner">
-                <div class="side-bar">
-                    <div class="user-info">
-                        <img class="img-profile img-circle img-responsive center-block" src="https://weesho.org/wp-content/uploads/2014/04/avatar-inconnu-2.jpg" alt="">
-                        <ul class="meta list list-unstyled">
-                            <li class="name">Nom du patient</li>
-                            <li class="email">Patient@gmail.com</li>
-                            <li class="number">Numéro de tel</li>
-                        </ul>
-                    </div>
-                <nav class="side-menu">
-                <ul class="nav">
-                  <li><a href="profil_patient.php"><span class="fa fa-user"></span> Profile</a></li> 
-                  <li class="active"><a href="avoir_rdv.html"><span class="fa fa-clock-o"></span> Avoir rendez-vous</a></li>
-                  <li><a href="voir_ordonnance.html"><span class="fa fa-credit-card"></span> Voir Ordonnance</a></li>
-                  
-                </ul>
-              </nav>
+    <div style="background-image: url('https://www.qare.fr/wp-content/uploads/2020/02/GettyImages-885764252-1.jpg');">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container">
+        <div class="view-account">
+            <section class="module">
+                <div class="module-inner">
+                    <div class="side-bar">
+                        <div class="user-info">
+                            <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+
+                            <ul class="meta list list-unstyled">
+                            <?php
+                            if (isset($_SESSION['unserId'])) {
+                                echo '<li class="name">'.$_SESSION['unserLastname'].' '. $_SESSION['unserFirstname'].'</li>';
+                            }
+                            ?>
+                            </ul>
+
+                        </div>
+                    <nav class="side-menu">
+                    <ul class="nav">
+                        <li ><a href="profil_patient.php"><span class="fa fa-user"></span> Profile</a></li> 
+                        <li class="active"><a href="avoir_rdv.php"><span class="fa fa-clock-o"></span> Avoir rendez-vous</a></li>
+                        <li><a href="voir_ordonnance.php"><span class="fa fa-credit-card"></span> Voir Ordonnance</a></li>
+                        <li><a href="index.php"><span class="fa fa-credit-card"></span> Accueil</a></li>
+                    </ul>
+                    </nav>
+                    
                 </div>
                 <div class="content-panel">
                     <h2 class="title">Avoir rendez-vous<span class="pro-label label label-warning"></span></h2>
@@ -152,7 +160,7 @@
         </div>
     </div>
 </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
 
     <script src="js/index.js"></script>
