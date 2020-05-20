@@ -4,11 +4,12 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>profil</title>
+    <title>Mon profil</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -17,6 +18,8 @@ session_start();
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="css/swiper.min.css">
+    
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
@@ -37,91 +40,95 @@ session_start();
             <div class="module-inner">
                 <div class="side-bar">
                     <div class="user-info">
-                         <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+
                         <ul class="meta list list-unstyled">
-                            <li class="name">nom du Médecin
-                            </li>
+                        <?php
+                        if ($_SESSION['DLastname']) {
+                          echo '<li class="name">'.$_SESSION['DLastname'].' '. $_SESSION['DFirstname'].'</li>';
+                        }else{
+                          die("Erreur: Vous n'etes pas connecté.");
+                        }
+                        ?>   
                         </ul>
+                        
                     </div>
                 <nav class="side-menu">
                 <ul class="nav">
-                  <li class="active"><a href="#"><span class="fa fa-user"></span> Profile</a></li> 
-                  <li><a href="#"><span class="fa fa-clock-o"></span> Voir la liste des rendez-vous</a>
+                  <li class="active"><a href="profil_medecine.php"><span class="fa fa-user"></span> Profile</a></li> 
+                  <li><a href="voir_liste_RDV.php"><span class="fa fa-clock-o"></span> Voir la liste des rendez-vous</a>
                   </li>
-                  <li><a href="#"><span class="fa fa-credit-card"></span> Ajouter une Ordonnance</a></li>
+                  <li><a href="ajouter_ordonnance.php"><span class="fa fa-credit-card"></span> Ajouter une Ordonnance</a></li>
                   
                 </ul>
               </nav>
                 </div>
                 <div class="content-panel">
                     <h2 class="title">Profile<span class="pro-label label label-warning"></span></h2>
-                    <form class="form-horizontal">
+                    
+                    <form class="form-horizontal" action="includes/logout.inc.php" method = "post">
+                    <button class="btn btn-primary" style="margin-left: 700px; margin-bottom:20px;">Deconnexion</button>
                         <fieldset class="fieldset">
-                            <h3 class="fieldset-title">Personal Info</h3>
+                            <h3 class="fieldset-title">infos personnelles</h3>
                             <div class="form-group avatar">
+                            <div class="w3-container">
+                            <ul class="w3-ul w3-card-4">
+                              <li class="w3-bar">
+                              
+                                <div class="w3-bar-item">
+                                <span class="w3-large">Nom</span><br>
+                                <?php
+                                if ($_SESSION['DLastname']) {
+                                  echo'<span>' .$_SESSION['DLastname'].' '. $_SESSION['DFirstname']. '</span>';
+                                }
+                                ?>
+                                </div>
+                              </li>
+
+                              <li class="w3-bar">
+                                <div class="w3-bar-item">
                                 
-                            <div class="col-sm-12">
-                        <input type="text" id="firstName" placeholder="Nom" class="form-control" name="nom" autofocus>
-                    </div>
-                </div>
-                <div class="form-group">
+                                  <span class="w3-large">Spécialité</span><br>
+                                  <?php
+                                if ($_SESSION['Dspecialite']) {
+                                  echo'<span class="w3-large">'.$_SESSION['Dspecialite'].'</span>';
+                                }
+                                  ?>
+                                </div>
+                              </li>
 
-                    <div class="col-sm-12">
-                        <input type="text" id="lastName" placeholder="Prénom" class="form-control" name="prénom" >
-                    </div>
-                </div>
-                <div class="form-group">
+                              <li class="w3-bar">
+                                <div class="w3-bar-item">
+                                  <span class="w3-large">Email</span><br>
+                                  <?php
+                                if ($_SESSION['DEmail']) {
+                                  echo'<span>'.$_SESSION['DEmail'].'</span>';
+                                }else{
+                                  echo'<span> Non spécifié </span>';
+                                }
+                                  ?>
+                                </div>
+                              </li>
+                              
+                                  <li class="w3-bar">
+                                <div class="w3-bar-item">
+                                  <span class="w3-large">Numéro de téléphone</span><br>
+                                  <?php
+                                  if ($_SESSION['Dtel'] !== 0){
+                                    echo'<span>'.'+212 '.$_SESSION['Dtel'].'</span>';
+                                  }else{
+                                    echo'<span> Non spécifié </span>';
+                                  }
+                                  ?>
+                                </div>
+                              </li>
+                              
+                            </ul>
+                          </div>
+                                
 
-                    <div class="col-sm-12">
-                        <input type="email" id="email" placeholder="Email" class="form-control" name= "email">
-                    </div>
-                </div> 
-                <div class="form-group"> 
-
-                    <div class="col-sm-12">
-                        <input type="text" id="speciality" placeholder="Spécialité" class="form-control" name="Spécialité" >
-                    </div>
-                </div>
-                <div class="form-group">
-
-                    <div class="col-sm-12">
-                        <input type="text" id="department" placeholder="département" class="form-control" name="département" >
-                    </div>
-                </div>
-                <div class="form-group">
-
-
-
-                    <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline">
-                                    <input type="password" name="password" id="password" placeholder="Nouveau Mot de passe" class="form-control" >
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline">
-                                    <input type="password" name="password" id="password" placeholder="Confirmer mot de passe " class="form-control" >
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-
-
-                    <div class="col-sm-12">
-                        <input type="phoneNumber" id="phoneNumber" name="numeroTel" placeholder="Numéro de téléphone" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
+                    
                         </fieldset>
-                        <hr>
-                        <div class="form-group">
-                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                                <input class="btn btn-primary" type="submit" value="Update Profile">
-                            </div>
-                        </div>
+                        <hr> 
                     </form>
                 </div>
             </div>

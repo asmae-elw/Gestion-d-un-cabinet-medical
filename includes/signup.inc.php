@@ -8,7 +8,7 @@ if (isset($_POST['signup-submit'])) {
     $psw = $_POST["password"];
     $pswR = $_POST["password-R"];
     $datenaissance = $_POST["dateNaissance"];
-    $genre = $_POST["genre"];
+    $genre = $_POST["Genre"];
 
 
     if (empty($nom) || empty($prenom) || empty($email) || empty($psw) || empty($pswR) || empty($datenaissance) || empty($genre)) {

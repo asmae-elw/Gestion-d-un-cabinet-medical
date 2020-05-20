@@ -1313,6 +1313,27 @@ ul.tabs-nav .tab-nav.active {
     color: #404040;
 }
 
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+
+
 .search-widget button[type="submit"] {
     padding: 10px 32px 9px;
     border: 0;

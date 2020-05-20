@@ -19,48 +19,34 @@
 </head>
 <main>
 <div class="container">
-    <div class = "col-md-6">
-    <form class="form-horizontal" action="includes/login_p.inc.php" role="form" method="post">
-        <h2>Connectez-vous en tant que patient</h2>
-        
-        <div class="form-group">
-            <div class="col-sm-12">
-                <input type="email" id="email" placeholder="Email" class="form-control" name= "email" >
+    <div class = "col-md-6" style="margin: auto;">
+        <form class="form-horizontal" action="includes/login.inc.php" role="form" method="post">
+            <h2>Connectez-vous</h2>
+            
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="email" id="email" placeholder="Email" class="form-control" name= "email" >
+                </div>
             </div>
-        </div>
 
 
-        <div class="form-group">
-            <div class="col-sm-12">
-                <input type="password" name="password" id="password" placeholder="Mot de passe" class="form-control" >   
-            </div>    
-        </div>
-        <div class="creatacc">
-            <a href="signup.php"> Vous n'avez pas un compte?</a>
-        </div>
-
-        <button type="submit" name="login-p-submit" class="btn btn-primary btn-block">Connexion</button>
-    </form> 
-    </div>
-    <div class = "col-md-6">
-    <form class="form-horizontal" action="includes/login_m.inc.php" role="form" method="post">
-        <h2>Connectez-vous en tant que medecin</h2>
-        
-        <div class="form-group">
-            <div class="col-sm-12">
-                <input type="email" id="email" placeholder="Email" class="form-control" name= "email" >
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="password" name="password" id="password" placeholder="Mot de passe" class="form-control" >   
+                </div>    
             </div>
-        </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                <select  class="form-control" id="Genre" name="Genre">
+                    <option value="Médecin">Médecin</option>
+                    <option value="Patient">Patient</option>
+                </select>
+                </div>
+            </div>
+            
 
-
-        <div class="form-group">
-            <div class="col-sm-12">
-                <input type="password" name="password" id="password" placeholder="Mot de passe" class="form-control" >   
-            </div>    
-        </div>
-    
-        <button type="submit" name="login-m-submit" class="btn btn-primary btn-block">Connexion</button>
-    </form> 
+            <button type="submit" name="login-submit" class="btn btn-primary btn-block">Connexion</button>
+        </form> 
     </div>
 </div> 
 </main>

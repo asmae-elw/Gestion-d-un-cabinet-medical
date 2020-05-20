@@ -63,10 +63,11 @@
     
 
     <div class="form-group">
-        <div class="col-sm-12">
-            <input type="text" id="gSangin" name="genre" placeholder="Homme/Femme" class="form-control">
+            <select  class="form-control" id="Genre" name="Genre">
+                <option value="Homme">Homme</option>
+                <option value="Femme">Femme</option>
+            </select>
         </div>
-    </div>
     
     
 
