@@ -17,9 +17,10 @@
     <link rel="stylesheet" href="css/mystyle.css">
     <title>Connexion</title>
 </head>
-<main>
+
 <div class="container">
-    <div class = "col-md-6" style="margin: auto;">
+
+    <div class="card-body col-lg-6" style="margin: auto;">
         <form class="form-horizontal" action="includes/login.inc.php" role="form" method="post">
             <h2>Connectez-vous</h2>
             
@@ -47,6 +48,6 @@
 
             <button type="submit" name="login-submit" class="btn btn-primary btn-block">Connexion</button>
         </form> 
+
     </div>
 </div> 
-</main>
