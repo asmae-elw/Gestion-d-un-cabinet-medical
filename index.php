@@ -19,7 +19,8 @@ session_start();
     <link rel="stylesheet" href="css/swiper.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+
     <script src="js/custom.js"></script>
 </head>
 <body>
@@ -35,7 +36,7 @@ session_start();
                         <nav class="site-navigation d-flex justify-content-end align-items-center">
                             <ul class="d-flex flex-column flex-lg-row justify-content-lg-end align-items-center">
                                 <li class="current-menu-item"><a href="index.html">Accueil</a></li>
-                                <li><a href="contact.html">Contactez-Nous</a></li>
+                                <li><a href="contact.php">Contactez-Nous</a></li>
                                 <?php
                                 if (isset($_SESSION['unserId'])) {
                                     echo "<li><a href='profil_patient.php'> Bonjour, ".$_SESSION['unserLastname']."</a></li>";

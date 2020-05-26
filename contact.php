@@ -19,7 +19,8 @@ session_start();
     <link rel="stylesheet" href="css/swiper.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body class="single-page">
     <header class="site-header">
@@ -33,15 +34,29 @@ session_start();
 
                         <nav class="site-navigation d-flex justify-content-end align-items-center">
                             <ul class="d-flex flex-column flex-lg-row justify-content-lg-end align-items-center">
-                                <li ><a href="index.php">Accueil</a></li>
-                                <li class="current-menu-item"><a href="contact.html">Contactez-Nous</a></li>
-                                <li><a href="login.php">Se Connecter</a></li>
-
-
-                                <li class="call-btn button gradient-bg mt-3 mt-md-0">
-                                    <a class="d-flex justify-content-center align-items-center" ><img src="images/emergency-call.png"> +212 527 778 8892</a>
-                                </li>
+                                <li><a href="index.php">Accueil</a></li>
+                                <li  class="current-menu-item"><a href="contact.php">Contactez-Nous</a></li>
+                                <?php
+                                if (isset($_SESSION['unserId'])) {
+                                    echo "<li><a href='profil_patient.php'> Bonjour, ".$_SESSION['unserLastname']."</a></li>";
+                                }else{
+                                    echo "<li><a href='login.php'>Se Connecter</a></li>";
+                                }
+                                ?>
+                                <?php
+                                if (isset($_SESSION['unserId'])) {
+                                    echo '<form action="includes/logout.inc.php" method = "post">
+                                    <button class="call-btn" type="submit" name="logout-submit" > Deconnexion</button>
+                                </form>';
+                                }else{
+                                    echo "<li class='call-btn button gradient-bg mt-3 mt-md-0'>
+                                    <a name='logout-submit' type='submit' class='d-flex justify-content-center align-items-center' href='#'><img src='images/emergency-call.png'> +212 527 778 8892</a>
+                                </li>";
+                                }
+                                ?>
+  
                             </ul>
+                             
                         </nav>
 
                     </div>
@@ -151,9 +166,9 @@ session_start();
                             <h2>Liens</h2>
 
                             <ul class="p-0 m-0">
-                                <li><a href="index.html">Accueil</a></li>
-                                <li><a href="contact.html">Contactez-Nous</a></li>
-                                <li><a href="login.html">Se Connecter</a></li>
+                                <li><a href="index.php">Accueil</a></li>
+                                <li><a href="contact.php">Contactez-Nous</a></li>
+                                <li><a href="login.php">Se Connecter</a></li>
                             </ul>
                         </div>
                     </div>

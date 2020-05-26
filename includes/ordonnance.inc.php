@@ -2,7 +2,7 @@
 session_start();
 if (isset($_POST['submit-ordonnance'])) {
     require 'dbh.inc.php';
-    $date_ordonnance = $_POST['date'];
+
     $medicament1 = $_POST['Médicament1'];
     $nbredefois1 = $_POST['fpj1'];
     $avap1 = $_POST['avap1'];
@@ -16,12 +16,15 @@ if (isset($_POST['submit-ordonnance'])) {
     $avap3 = $_POST['avap3'];
     $remarque = $_POST['remarque'];
 
-    
+    if (empty($medicament1) ||empty($nbredefois1)||empty($avap1) ||empty($remarque)){
+        header("Location: ../ajouter_ordonnance.php?error empty fileds");
+        exit();
+    }
     $sql = "SELECT * FROM `Rendez-vous` WHERE idm=".$_SESSION['DId'];
     $result = mysqli_query($conn, $sql);
     $statment = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($statment, $sql)) { //cheking if our connection to the databse doesn't work
-        header("Location: ../ajouter_ordonnance.php?error=sqlerror1");
+        header("Location: ../ajouter_ordonnance.php?error=sqlerror");
         exit();
     }elseif (mysqli_num_rows($result)) {
         while($row = mysqli_fetch_assoc($result)) {
@@ -49,6 +52,6 @@ if (isset($_POST['submit-ordonnance'])) {
     }
 
 }else {
-    header("Location: ../signup.php");
+    header("Location: ../ajouter_ordonnance.php");
     exit();
 }

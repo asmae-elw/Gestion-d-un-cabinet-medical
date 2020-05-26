@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>profil</title>
+    <title>Rendez-vous</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,8 +21,8 @@ session_start();
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style_profil.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_profil.css">
     <script src="js/custom.js"></script>
 
 
@@ -39,7 +39,7 @@ session_start();
                         <ul class="meta list list-unstyled">
                           <?php
                             echo '<li class="name">'.$_SESSION['DLastname']." " .$_SESSION['DFirstname'].'</li>';
-                            echo '<li class="name">'.$_SESSION['Dspecialite'].'</li>';
+                            echo '<li class="name"> spécialité:' .$_SESSION['Dspecialite'].'</li>';
                             ?>
                         </ul>
                     </div>
@@ -70,27 +70,32 @@ session_start();
                                 $result_p = mysqli_query($conn, $sql2);
                                 if (mysqli_num_rows($result_p)) {
                                   while($row_p = mysqli_fetch_assoc($result_p)){
-                                    echo '<div class="form-group avatar">
-                                    <button type="button" class="collapsible">'.$row_p['Nom']." ".$row_p['Prénom'].'</button>
-                                    <div class="content">';
+                                    
+
+                                    if ($row["etat"] == 1) {
+                                      echo "<h2>Rendez-vous passés</h2>";
+                                      echo '<div class="form-group avatar"><button type="button" class="collapsible">'.$row_p['Nom']." ".$row_p['Prénom'].'</button><div class="content">';
+                                      echo '<p>Email : '.$row_p["Email"]. '</p>';
+                                      echo '<p>Genre : '.$row_p["genre"]. '</p>';
+                                      echo '<p>Date de naissance : '.$row_p["Datenaissance"]. '</p>';
+                                      echo '<p>Etat :'. '<span style="color: green;"> Rendez-vous Passé.</span>'. '</p>';
+                                      echo '<p>Date du rendez-vous : '.$row["Dateti"].'</p>';
+                                      echo '<a><span style="font-size:15px;cursor:pointer" onclick="openNav()">&#9998;ajouter ordonnance</span></a></div>';
+                                    }elseif($row["etat"] == 2) {
+                                      echo "<h2>En attente du patient</h2>";
+                                      echo '<div class="form-group avatar"><button type="button" class="collapsible">'.$row_p['Nom']." ".$row_p['Prénom'].'</button><div class="content">';
                                     echo '<p>Email : '.$row_p["Email"]. '</p>';
                                     echo '<p>Genre : '.$row_p["genre"]. '</p>';
                                     echo '<p>Date de naissance : '.$row_p["Datenaissance"]. '</p>';
-
-                                    if ($row["etat"] == 1) {
-                                      echo '<p>Etat :'. '<span style="color: green;"> Rendez-vous Passé.</span>'. '</p>';
-                                      echo '<p>Date du rendez-vous : '.$row["Date"].' à '. $row["Temps"] .'</p>';
-                                      echo '<a><span style="font-size:15px;cursor:pointer" onclick="openNav()">&#9998;ajouter ordonnance</span></a></div>';
-                                    }elseif($row["etat"] == 2) {
-                                      echo '<p>etat :'. '<span style="color: blue;"> En attente du patient...</span>'. '</p>';
+                                      echo '<p>Etat :'. '<span style="color: blue;"> En attente du patient...</span>'. '</p></div>';
                                     }else{
-                                      echo '<p>etat :'. '<span style="color: red;"> Annulé !</span>'. '</p></div>';
+                                      echo "<h2>Vous n'avez pas de rendez-vous.</h2></div>";
                                     }
                                   }
                                 }  
                               }
                             } else {
-                              echo "Pas de Rendez-vous.";
+                              echo "<p>etat :Vous n'avez pas de rendez-vous.</p>";
                             }
                             ?>
                           <div id="mySidenav" class="sidenav">
@@ -98,11 +103,23 @@ session_start();
                            
 
                                 <div class="form-group" style="margin-top:5px;">
+                                </div>
+                                <div class="form-group">
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label class="radio-inline">
-                                                    <input type="date" name="date" id="date" placeholder="date"  class="form-control" >
+                                                    <input type="text" name="Médicament1" placeholder=" Médicament 1 (obligatoire)" class="form-control" >
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label class="radio-inline">
+                                                    <input type="number" name="fpj1"  placeholder="# fois par jour (obligatoire)" class="form-control" >
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label class="radio-inline">
+                                                    <input type="text" name="avap1"   placeholder="av/ap repas (obligatoire)" class="form-control" >
                                                 </label>
                                             </div>
                                         </div>
@@ -113,28 +130,7 @@ session_start();
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label class="radio-inline">
-                                                    <input type="text" name="Médicament1" placeholder=" Médicament 1" class="form-control" >
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <label class="radio-inline">
-                                                    <input type="number" name="fpj1"  placeholder="# fois par jour" class="form-control" >
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <label class="radio-inline">
-                                                    <input type="text" name="avap1"   placeholder="av/ap repas" class="form-control" >
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <label class="radio-inline">
-                                                    <input type="text" name="Médicament2" placeholder=" Médicament 1" class="form-control" >
+                                                    <input type="text" name="Médicament2" placeholder=" Médicament 2 " class="form-control" >
                                                 </label>
                                             </div>
                                             <div class="col-sm-4">
@@ -144,7 +140,7 @@ session_start();
                                             </div>
                                             <div class="col-sm-4">
                                                 <label class="radio-inline">
-                                                    <input type="text" name="avap2"   placeholder="av/ap repas" class="form-control" >
+                                                    <input type="text" name="avap2"   placeholder="av/ap repas " class="form-control" >
                                                 </label>
                                             </div>
                                         </div>
@@ -155,7 +151,7 @@ session_start();
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label class="radio-inline">
-                                                    <input type="text" name="Médicament3" placeholder=" Médicament 1" class="form-control" >
+                                                    <input type="text" name="Médicament3" placeholder=" Médicament 3 " class="form-control" >
                                                 </label>
                                             </div>
                                             <div class="col-sm-4">
@@ -172,7 +168,7 @@ session_start();
                                     </div>
                                 </div>    
                                 <div style="margin-top:10px;">
-                                  <textarea name="remarque" placeholder="Remarques..."></textarea>
+                                  <textarea name="remarque" placeholder="Remarque...(obligatoire)"></textarea>
                                 </div>
                                 <button type="submit" name="submit-ordonnance" class="btn btn-primary btn-block" style="margin-top:10px;">Envoyer</button>
                             </form>                           
@@ -182,7 +178,7 @@ session_start();
 
                           <script>
                           function openNav() {
-                            document.getElementById("mySidenav").style.width = "500px";
+                            document.getElementById("mySidenav").style.width = "600px";
                           }
 
                           function closeNav() {

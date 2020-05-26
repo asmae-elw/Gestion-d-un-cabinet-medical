@@ -15,7 +15,7 @@
     <script src="js/index.js"></script>
 
     <link rel="stylesheet" href="css/mystyle.css">
-    <title>Inscription - Patient</title>
+    <title>Inscription</title>
 </head>
 
 <form class="form-horizontal" action="includes/signup.inc.php" role="form" method="post">
