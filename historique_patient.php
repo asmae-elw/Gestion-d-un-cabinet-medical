@@ -112,7 +112,7 @@ tr:nth-child(even) {
                                       $preM = $row_m['Prénom'];
                                       $sql3 = "SELECT * FROM `Ordonnance` WHERE idr=".$idr;
                                       $result_o = mysqli_query($conn, $sql3);
-                                      if (mysqli_num_rows($result_o)>0){
+                                      if (mysqli_num_rows($result_o)){
                                         $row_o = mysqli_fetch_assoc($result_o);
                                         $med1 = $row_o['Medicament1'];
                                         $med2 = $row_o['Medicament2'];
@@ -124,24 +124,25 @@ tr:nth-child(even) {
                                         $avap2 = $row_o['avap2'];
                                         $avap3 = $row_o['avap3'];
                                         $remarque = $row_o['remarque'];
+                                        if ($etat == 1 || $remarque !== "") {
+                                          
+                                          echo "<td>".$i."</td>";
+                                          echo "<td>".$dater."</td>";
+                                          echo "<td>". $preM." ". $nomM."</td>";
+                                          echo "<td>".$remarque."</td>";
+                                          echo '<td> <a type="button" class="collapsible">ordonnace</a>
+                                          <div class="content">';
+                                          echo '<ol><li>' .$med1. "  "."<br>". $nfj1 ." fois par jour<br>".$avap1.'</li>';
+                                          echo '<li>'.$med2. "  " ."<br>". $nfj2 ." fois par jour<br>".$avap2.'</li>';
+                                          echo '<li>'.$med3. "  " ."<br>". $nfj3 ." fois par jour<br>".$avap3.'</li>';
+                                          echo '</ol></tr>';
+                                          $i += 1;
+                                        }elseif($etat == 2 || $etat == 0){
+                                          echo "<h2> Pas d'historique</h2>";
+                                        }
                                         
                                       }
-                                      if ($etat == 1 || $remarque !== "") {
-                                          
-                                        echo "<td>".$i."</td>";
-                                        echo "<td>".$dater."</td>";
-                                        echo "<td>". $preM . $nomM."</td>";
-                                        echo "<td>".$remarque."</td>";
-                                        echo '<td> <a type="button" class="collapsible">ordonnace</a>
-                                        <div class="content">';
-                                        echo '<ol><li>' .$med1. "  "."<br>". $nfj1 ." fois par jour<br>".$avap1.'</li>';
-                                        echo '<li>'.$med2. "  " ."<br>". $nfj2 ." fois par jour<br>".$avap2.'</li>';
-                                        echo '<li>'.$med3. "  " ."<br>". $nfj3 ." fois par jour<br>".$avap3.'</li>';
-                                        echo '</ol></tr>';
-                                        $i += 1;
-                                      }elseif($etat == 2 || $etat == 0){
-                                        echo "<h2> Pas d'historique</h2>";
-                                      }
+                                      
                                         
                                       }
                                   }
