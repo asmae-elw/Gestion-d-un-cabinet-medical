@@ -53,6 +53,8 @@ tr:nth-child(even) {
             <div class="module-inner">
                 <div class="side-bar">
                     <div class="user-info">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRj0sVdHUILZRoIEPpZsqFqaxKUU1KPE45kn2LcjB6WmcElCf-C&usqp=CAU" class="rounded-circle" alt="Avatar" style="width:150px">
+                        <ul class="meta list list-unstyled">
                             <ul class="meta list list-unstyled">
                             <?php
                             if (isset($_SESSION['unserId'])) {
@@ -66,7 +68,7 @@ tr:nth-child(even) {
                     <ul class="nav">
                         <li ><a href="profil_patient.php"><span class="fa fa-user"></span> Profile</a></li> 
                         <li><a href="avoir_rdv.php"><span class="fa fa-clock-o"></span> Avoir rendez-vous</a></li>
-                        <li class="active"><a href="voir_ordonnance.php"><span class="fas fa-history"></span>Mon Historique</a></li>
+                        <li class="active"><a href="historique_patient.php"><span class="fas fa-history"></span>Mon Historique</a></li>
                         <li><a href="index.php"><span class="fas fa-house-user"></span> Accueil</a></li>
                     </ul>
                     <form class="form-horizontal" action="includes/logout.inc.php" method = "post">
@@ -108,8 +110,6 @@ tr:nth-child(even) {
                                       $row_m = mysqli_fetch_assoc($result_m);
                                       $nomM = $row_m['Nom'];
                                       $preM = $row_m['Prénom'];
-                                        
-                                      }
                                       $sql3 = "SELECT * FROM `Ordonnance` WHERE idr=".$idr;
                                       $result_o = mysqli_query($conn, $sql3);
                                       if (mysqli_num_rows($result_o)>0){
@@ -142,7 +142,8 @@ tr:nth-child(even) {
                                       }elseif($etat == 2 || $etat == 0){
                                         echo "<h2> Pas d'historique</h2>";
                                       }
-                                      
+                                        
+                                      }
                                   }
                                 }
                                 ?>

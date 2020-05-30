@@ -33,6 +33,8 @@ session_start();
             <div class="module-inner">
                 <div class="side-bar">
                     <div class="user-info">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRj0sVdHUILZRoIEPpZsqFqaxKUU1KPE45kn2LcjB6WmcElCf-C&usqp=CAU" class="rounded-circle" alt="Avatar" style="width:150px">
+                        <ul class="meta list list-unstyled">
                         <ul class="meta list list-unstyled">
                         <?php
                             if (isset($_SESSION['unserId'])) {

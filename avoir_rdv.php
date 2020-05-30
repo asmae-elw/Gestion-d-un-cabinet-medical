@@ -34,6 +34,7 @@ session_start();
             <section class="module">
                 <div class="module-inner">
                     <div class="side-bar">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRj0sVdHUILZRoIEPpZsqFqaxKUU1KPE45kn2LcjB6WmcElCf-C&usqp=CAU" class="rounded-circle" alt="Avatar" style="width:150px">
                         <div class="user-info">
                             <ul class="meta list list-unstyled">
                             <?php
@@ -156,25 +157,8 @@ session_start();
                                             </div>
                                             <div class="time" ng-class="{'time-active': edittime.active}">
                                     <input type="text" class="time-input" ng-model="edittime.input" ng-keydown="changeInputTime($event)" ng-focus="edittime.active = true; edittime.digits = [];" ng-blur="edittime.active = false"/>
-                                    <?php
-                                    
-                                    require 'includes/dbh.inc.php';
-                                    require 'includes/rdv.inc.php';
-                                    echo "<h1> la date:".$date."</h1>";
-                                    
-                                    $sql = "SELECT * FROM `Rendez-vous` WHERE Datei=".$date;
-                                    $result = mysqli_query($conn, $sql);
-                                    if (mysqli_num_rows($result)) {
-                                    while($row = mysqli_fetch_assoc($result)) {
-                                        if ($row['Dateti'] == $date){
-                                            echo '<div class="formatted-time" style="color: gray ! important;">{{ edittime.formatted }}</div>';
-
-                                        }else{
-                                            echo '<div class="formatted-time" >{{ edittime.formatted }}</div>';
-                                        }
-                                    }
-                                    }
-                                    ?>
+                                    <div class="formatted-time" >{{ edittime.formatted }}</div>
+                            
                                     </div>
                                             <div class="increment-time" ng-click="adjustTime('increase')">
                                                 <svg width="24" height="24">

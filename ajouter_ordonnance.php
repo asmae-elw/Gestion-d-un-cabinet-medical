@@ -36,6 +36,7 @@ session_start();
             <div class="module-inner">
                 <div class="side-bar">
                     <div class="user-info">
+                    	<img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRU_tRT57Pq_fe8VZ0ef9ZdTp8iVqRryxhj3luucZ2EdeHZlDDh&usqp=CAU" class="rounded-circle" width="180" height="200" >
                         <ul class="meta list list-unstyled">
                           <?php
                             echo '<li class="name">'.$_SESSION['DLastname']." " .$_SESSION['DFirstname'].'</li>';
@@ -44,8 +45,7 @@ session_start();
                         </ul>
                     </div>
                 <nav class="side-menu">
-                <ul class="nav"> 
-                  <li class="active" ><a href="ajouter ordonnance.html"><span class="fa fa-credit-card"></span> Rendez-vous</a></li>
+                <ul class="nav">
                   
                     <form class="form-horizontal" action="includes/logout.inc.php" method = "post">
                       <button class="btn btn-primary" style="margin-left: 14%; margin-top: 10%;"><span class="fa fa-user"></span> Déconnexion</button>
@@ -59,7 +59,7 @@ session_start();
                     <h2 class="title">Liste des rendez-vous<span class="pro-label label label-warning"></span></h2>
                     <form class="form-horizontal" action="includes/ordonnance.inc.php" role="form" method="post">
                         <fieldset class="fieldset">
-                            <h3 class="fieldset-title">Ici vous pouvez-ajouter une ordonnance à vos patients</h3>
+                            <h3 class="fieldset-title" style="font-size:20px ;color:black;">Ici vous trouvez la liste des rendez-vous de vos patients ainsi que leurs informations nécessaires et vous pouvez leurs ajouter une ordonnance</h3>
                             <?php
                             require 'includes/dbh.inc.php';
                             $sql = "SELECT * FROM `Rendez-vous` WHERE idm=".$_SESSION['DId'];

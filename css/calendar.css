@@ -18,9 +18,9 @@ html, body {
   height: auto;
   max-width: 100%;
   position: absolute;
-  top: 120px;
-  left: 0;
-  right: 0;
+  top: 150px;
+  left: 150px;
+  right: 0px;
   margin: auto;
 }
 
