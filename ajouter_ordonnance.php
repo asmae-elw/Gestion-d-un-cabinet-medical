@@ -73,7 +73,7 @@ session_start();
                                     
 
                                     if ($row["etat"] == 1) {
-                                      echo "<h2>Rendez-vous passés</h2>";
+                                      
                                       echo '<div class="form-group avatar"><button type="button" class="collapsible">'.$row_p['Nom']." ".$row_p['Prénom'].'</button><div class="content">';
                                       echo '<p>Email : '.$row_p["Email"]. '</p>';
                                       echo '<p>Genre : '.$row_p["genre"]. '</p>';
@@ -81,12 +81,12 @@ session_start();
                                       echo '<p>Etat :'. '<span style="color: green;"> Rendez-vous Passé.</span>'. '</p>';
                                       echo '<p>Date du rendez-vous : '.$row["Dateti"].'</p>';
                                       echo '<a><span style="font-size:15px;cursor:pointer" onclick="openNav()">&#9998;ajouter ordonnance</span></a></div>';
-                                    }elseif($row["etat"] == 2) {
-                                      echo "<h2>En attente du patient</h2>";
+                                    }
+                                    elseif($row["etat"] == 2) { 
                                       echo '<div class="form-group avatar"><button type="button" class="collapsible">'.$row_p['Nom']." ".$row_p['Prénom'].'</button><div class="content">';
-                                    echo '<p>Email : '.$row_p["Email"]. '</p>';
-                                    echo '<p>Genre : '.$row_p["genre"]. '</p>';
-                                    echo '<p>Date de naissance : '.$row_p["Datenaissance"]. '</p>';
+                                      echo '<p>Email : '.$row_p["Email"]. '</p>';
+                                      echo '<p>Genre : '.$row_p["genre"]. '</p>';
+                                      echo '<p>Date de naissance : '.$row_p["Datenaissance"]. '</p>';
                                       echo '<p>Etat :'. '<span style="color: blue;"> En attente du patient...</span>'. '</p></div>';
                                     }else{
                                       echo "<h2>Vous n'avez pas de rendez-vous.</h2></div>";

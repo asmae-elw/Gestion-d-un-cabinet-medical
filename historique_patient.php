@@ -81,7 +81,7 @@ tr:nth-child(even) {
                     <form class="form-horizontal">
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title"> Ici vous trouvez l'historique de toutes les rendez-vous que vous avez pris et les visites que vous avez fait aucien de notre cabinet, ainsi que votre ordonnance !</h3>
-                            <div class="form-group avatar">
+                            <div class="form-group avatar" style='width: 1000px;'>
      
 
                             <?php
@@ -127,10 +127,10 @@ tr:nth-child(even) {
                                         if ($etat == 1 || $remarque !== "") {
                                           
                                           echo "<td>".$i."</td>";
-                                          echo "<td>".$dater."</td>";
+                                          echo "<td style='width: 30%;'>".$dater."</td>";
                                           echo "<td>". $preM." ". $nomM."</td>";
-                                          echo "<td>".$remarque."</td>";
-                                          echo '<td> <a type="button" class="collapsible">ordonnace</a>
+                                          echo "<td style='width: 30%;'>".$remarque."</td>";
+                                          echo '<td style="width: 40%;"> <a type="button" class="collapsible">ordonnace</a>
                                           <div class="content">';
                                           echo '<ol><li>' .$med1. "  "."<br>". $nfj1 ." fois par jour<br>".$avap1.'</li>';
                                           echo '<li>'.$med2. "  " ."<br>". $nfj2 ." fois par jour<br>".$avap2.'</li>';

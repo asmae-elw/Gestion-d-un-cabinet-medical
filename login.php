@@ -36,12 +36,13 @@
         </div>
         <div class="form-group">
             <div class="col-sm-12">
-            <select  class="form-control" id="Genre" name="Genre">
+            <select  class="form-control" id="Genre" name="Genre" style="height: 30px ! important;">
                 <option value="Médecin">Médecin</option>
                 <option value="Patient">Patient</option>
             </select>
             </div>
         </div>
+        <a href="signup.php" style="text-align: center;">Vous n'avez pas un compte?</a>
         
         <button type="submit" name="login-submit" class="btn btn-primary btn-block">Connexion</button>
     </form> 

@@ -63,7 +63,7 @@
     
 
     <div class="form-group">
-            <select  class="form-control" id="Genre" name="Genre">
+            <select  class="form-control" id="Genre" name="Genre" style="height: 30px ! important;">
                 <option value="Homme">Homme</option>
                 <option value="Femme">Femme</option>
             </select>
